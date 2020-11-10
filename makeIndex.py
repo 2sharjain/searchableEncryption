@@ -1,7 +1,8 @@
 from nltk.stem import WordNetLemmatizer
 import nltk
+import os
 lematizer = WordNetLemmatizer()
-for i in range(1, 2):
+for i in range(0, 1):
     file_name = './dataset/rfc'+str(i)+'.txt'
     f = open(file_name, mode='r')
     doc = f.read()
