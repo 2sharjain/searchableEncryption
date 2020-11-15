@@ -11,10 +11,7 @@ import sys
 # We use a corpus of four documents.  Each document has an id, and
 # these are the keys in the following dict.  The values are the
 # corresponding filenames.
-document_filenames = {0: "documents/lotr.txt",
-                      1: "documents/silmarillion.txt",
-                      2: "documents/rainbows_end.txt",
-                      3: "documents/the_hobbit.txt"}
+document_filenames = {0: "dataset/rfc0.txt"}
 
 # The size of the corpus
 N = len(document_filenames)
@@ -71,6 +68,7 @@ def initialize_terms_and_postings():
         document = f.read()
         f.close()
         terms = tokenize(document)
+        print(terms)
         unique_terms = set(terms)
         dictionary = dictionary.union(unique_terms)
         for term in unique_terms:
