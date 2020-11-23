@@ -1,4 +1,3 @@
-# %%
 from nltk.stem import WordNetLemmatizer
 import nltk
 import os
@@ -53,7 +52,7 @@ def evaluate_query(corpus_index, query):
     query = np.array(query)
     di = 0
     for doc in corpus_index:
-        doc = np.array(doc).reshape(len(doc),1)
+        doc = np.array(doc)#.reshape(len(doc),1)
         score = np.asscalar(np.dot(query.T, doc))
         if score!=0:
             heapq.heappush(ans, (score,"doc"+str(di)))
@@ -73,9 +72,6 @@ def driver():
     query = count_vectorize_query(query, dictionary)
     query = np.array(list(query.values())).reshape((len(query),1))
     return evaluate_query(corp, query)
-
-driver()
-
 
 
 # %%

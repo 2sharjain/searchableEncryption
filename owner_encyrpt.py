@@ -1,4 +1,3 @@
-# %%
 from makeIndex import *
 import random
 N = 10
@@ -17,8 +16,10 @@ def generate_key():
     global n
     S = list(np.random.randint(2, size = n+U+1))
     M1 = np.random.rand(n+U+1,n+U+1)
+    M1 = M1 + M1.T
     M1_inv = np.linalg.inv(M1)
     M2 = np.random.rand(n+U+1,n+U+1)
+    M2 = M2 + M2.T
     M2_inv = np.linalg.inv(M1)
 
     return S, M1, M2, M1_inv, M2_inv
@@ -63,8 +64,9 @@ def split_and_encrypt(corpus):
         doc2_e = np.squeeze(doc2_e)
 
         encrypted_corpus.append([doc1_e,doc2_e])
-    
+
     encrypted_corpus = np.array(encrypted_corpus)
+    print(M1.shape)
     return encrypted_corpus
 
 def driver_owner():
@@ -75,8 +77,8 @@ def driver_owner():
     encrypted_index = split_and_encrypt(corpus)
     return S, M1_inv, M2_inv, dictionary, encrypted_index
 
-driver_owner()
-print("emd")
 
 
-# %%
+
+
+
